@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>โปรแกรมออกกำลังกาย & โภชนาการ | IS Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#16a34a;
+  --primary-dark:#15803d;
+  --accent:#0ea5e9;
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b; 
+  --warn:#ef4444;
+  --shadow:0 10px 25px rgba(2,8,23,.08);
+   --radius:16px;
+}
+
+*{box-sizing:border-box;}
+html,body {
+  margin:0;padding:0;font-family:"Kanit",system-ui,sans-serif;
+  background:var(--bg)
+  ;color:var(--text);
+}
+
+header{
+  background: linear-gradient(135deg,var(--primary),#22c55e 60%,var(--accent));
+  color:#fff; text-align:center; padding:32px 16px; position:relative; overflow:hidden;
+}
+header h1{margin:0;font-weight:700;}
+header p{margin:10px 0 0;font-weight:300;opacity:.95;}
+.chip{
+  display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+  padding:6px 12px;border-radius:999px;font-size:.95rem;margin-top:10px;backdrop-filter:blur(6px)
+}
+
+.container{max-width:1100px;margin:24px auto;padding:0 16px;}
+nav.menu{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:8px auto 20px;}
+nav.menu button{
+  appearance:none;border:0;padding:10px 14px;border-radius:12px;background:#fff;
+  color:var(--text);box-shadow:var(--shadow);cursor:pointer;font-weight:600;
+  transition:transform .08s ease, background .2s;
+}
+nav.menu button.active, nav.menu button:hover{ background:#eaf7ee; transform:translateY(-1px); }
+
+.section{display:none;animation:fade .25s ease forwards;}
+.section.show{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.subtabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0 18px;}
+.subtabs button{background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:8px 14px;cursor:pointer;}
+.subtabs button.active{background:#ecfeff;border-color:#a5f3fc;}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+@media(max-width:860px){.grid{grid-template-columns:1fr;}}
+
+.card{
+  background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+  padding:18px; display:flex; gap:16px; align-items:flex-start;
+}
+.thumb{width:140px;min-width:140px;height:140px;border-radius:12px;object-fit:cover;border:1px solid #e5e7eb;}
+.title{display:flex;align-items:center;gap:10px;margin:0 0 4px;}
+.lvl{font-size:.85rem;background:#ecfeff;color:#0369a1;border:1px solid #bae6fd;padding:2px 10px;border-radius:999px;}
+.meta{font-size:.95rem;color:var(--muted);margin-bottom:8px;}
+details{background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;padding:10px 12px;}
+details summary{cursor:pointer;font-weight:600;color:#0f172a;}
+.list{margin:8px 0 0 18px;}
+.bad{color:var(--warn);font-weight:600;}
+.good{color:var(--primary-dark);font-weight:600;}
+.warn{background:#fee2e2;border:1px solid #fecaca;color:#991b1b;padding:6px 10px;border-radius:10px;margin-top:8px;display:inline-block;}
+.note{background:#ecfdf5;border:1px solid #bbf7d0;color:#065f46;padding:8px 12px;border-radius:12px;margin-top:10px;display:block;}
+
+.food-group{margin:14px 0;}
+.food-group h3{margin:0 0 8px;}
+.food-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+@media(max-width:860px){.food-list{grid-template-columns:1fr;}}
+.food-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;box-shadow:var(--shadow);}
+.food-card h4{margin:0 0 6px;}
+.food-card p{margin:6px 0;color:var(--muted);}
+
+footer{padding:28px 16px;text-align:center;color:#475569;}
+.center{display:flex;justify-content:center;}
+.divider{height:1px;background:#e2e8f0;margin:18px 0;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>โปรแกรมออกกำลังกาย & โภชนาการสำหรับผู้เริ่มต้น</h1>
+  <p>“ความพยายามวันนี้ คือสุขภาพที่คุณภูมิใจในวันพรุ่งนี้”</p>
+  <div class="chip">เริ่มจาก Level 1 แล้วค่อยๆ ไต่ระดับ ➜ ฟิตขึ้น ปลอดภัยขึ้น</div>
+</header>
+
+<div class="container">
+  <!-- เมนูหลัก -->
+  <nav class="menu" id="mainMenu">
+    <button data-section="exercise" class="active">🏋️‍♀️ ออกกำลังกาย</button>
+    <button data-section="food">🥗 อาหารการกิน</button>
+  </nav>
+
+  <!-- SECTION: EXERCISE -->
+  <section id="exercise" class="section show">
+    <div class="note center" style="max-width:900px">
+      เริ่มจากท่าระดับ <b>Level 1</b> ก่อนเสมอ แล้วค่อยเพิ่มเป็น Level 2–5 เมื่อร่างกายพร้อม
+    </div>
+    <div class="subtabs" id="exerciseTabs">
+      <button data-cat="cardio" class="active">คาร์ดิโอ</button>
+      <button data-cat="strength">เวทเทรนนิ่ง</button>
+    </div>
+    <div id="exerciseGrid" class="grid"></div>
+    <div class="divider"></div>
+    <div class="note">
+      เคล็ดลับความสม่ำเสมอ: ตั้งเป้าเล็กๆ ที่ทำได้จริง เช่น “วันละ 10 นาที” แล้วบวกเพิ่มสัปดาห์ละนิด ✨
+    </div>
+  </section>
+
+  <!-- SECTION: FOOD -->
+  <section id="food" class="section">
+    <div class="note center" style="max-width:900px">
+      “กินดี มีวินัย หลับเพียงพอ” ➜ ผลลัพธ์จะชัดขึ้นอย่างปลอดภัย
+    </div>
+
+    <div class="food-group">
+      <h3>🍗 โปรตีน (ซ่อมแซมกล้ามเนื้อ)</h3>
+      <div class="food-list" id="foodProtein"></div>
+    </div>
+    <div class="food-group">
+      <h3>🍚 คาร์โบไฮเดรตดี (พลังงานยั่งยืน)</h3>
+      <div class="food-list" id="foodCarb"></div>
+    </div>
+    <div class="food-group">
+      <h3>🥦 ผักผลไม้ (วิตามิน–ไฟเบอร์)</h3>
+      <div class="food-list" id="foodVegFruit"></div>
+    </div>
+    <div class="food-group">
+      <h3>🥤 สมูทตี้/เมนูด่วน (ก่อน/หลังออกกำลัง)</h3>
+      <div class="food-list" id="foodSmoothie"></div>
+    </div>
+    <div class="divider"></div>
+    <div class="note">
+      ดื่มน้ำให้ได้ ~30–35 ml/นน.ตัว 1 kg/วัน (เช่น หนัก 60 kg ➜ ประมาณ 1.8–2.1 ลิตร) และปรับตามอากาศ/เหงื่อ
+    </div>
+  </section>
+</div>
+
+<footer>
+  © IS Project – ทำเพื่อตัวคุณเองในเวอร์ชันที่แข็งแรงขึ้นทุกวัน 💚
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
